@@ -130,13 +130,12 @@ class Runner extends AbstractRunner {
     async run(input: string): Promise<{
             first: string,
             second: string,
-        }> {
-            return {
-                first: String(First.run(input)),
-                second: String(Second.run(input)),
-            };
-        }
-    
+    }> {
+        return {
+            first: String(First.run(input)),
+            second: String(Second.run(input)),
+        };
+    } 
 }
 
 export default Runner;
