@@ -3,7 +3,7 @@ import { argv, exit } from "process";
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
 import prompts, { Choice } from 'prompts';
-import Runner from "./levels/01";
+import AbstractRunner from "./types/runner";
 
 const sections = [
     {
@@ -94,11 +94,11 @@ async function interactivePrompt() {
     );
 
     const { default: defaultExport } = await import(`./levels/${level}`);
-    const runner = new defaultExport() as Runner;
+    const runner = new defaultExport() as AbstractRunner;
 
     const result = await runner.run(input);
 
-    console.log(`Result of running level \`${level}\` using input file \`${input}\``);
+    console.log(`Result of running level \`${level}\` using input file \`${inputFileName}\``);
     console.log('-------------------------');
     console.log(result);
     console.log('-------------------------');
@@ -166,7 +166,7 @@ async function uninteractivePrompt() {
     );
 
     const { default: defaultExport } = await import(`./levels/${normalisedLevel}`);
-    const runner = new defaultExport() as Runner;
+    const runner = new defaultExport() as AbstractRunner;
 
     const result = await runner.run(input_);
 
