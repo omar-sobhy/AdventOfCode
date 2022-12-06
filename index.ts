@@ -30,6 +30,10 @@ const sections = [
 const usage = commandLineUsage(sections);
 
 function normalise(n: string): string | undefined {
+    if (n.toLowerCase() === 'main') {
+        return 'main';
+    }
+    
     const nNumber = Number(n);
     if (isNaN(nNumber)) {
         return undefined;
