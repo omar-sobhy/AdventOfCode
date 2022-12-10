@@ -24,3 +24,6 @@ export function group<T, F extends (el: T, index?: number, arr?: T[]) => string>
     return groupObj;
 
 }
+
+export { default as HashMap } from "./hashMap";
+
