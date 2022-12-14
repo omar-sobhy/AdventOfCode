@@ -69,6 +69,12 @@ export default class HashMap<K,
         return this;
     }
 
+    delete(k: K): boolean {
+        const hash = this.hash(k);
+
+        return this.valueMap.delete(hash);
+    }
+
     *entries() {
         for (const [hash, keys] of this.keyMap.entries()) {
             const values = this.valueMap.get(hash)!;
