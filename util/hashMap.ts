@@ -87,4 +87,14 @@ export default class HashMap<K,
             }
         }
     }
+
+    *values() {
+        for (const [hash, keys] of this.keyMap.entries()) {
+            const values = this.valueMap.get(hash)!;
+
+            for (let i = 0; i < keys.length; ++i) {
+                yield values[i] as V;
+            }
+        }
+    }
 }
